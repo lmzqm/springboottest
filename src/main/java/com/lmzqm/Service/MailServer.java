@@ -19,7 +19,7 @@ public class MailServer {
 
     @Autowired
     private JavaMailSender mailSender;
-gi
+
     public ErrorInfo<String> sendMail(String email) throws Exception{
 
         logger.info("sendMail to "+ email);
