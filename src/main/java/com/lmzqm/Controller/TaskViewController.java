@@ -29,7 +29,7 @@ import java.util.concurrent.Future;
 public class TaskViewController {
 
     @Bean
-    public ThreadPoolTaskScheduler threadPoolTaskScheduler(){
+    static public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
         return new ThreadPoolTaskScheduler();
     }
 

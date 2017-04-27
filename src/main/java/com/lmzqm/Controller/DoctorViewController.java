@@ -2,7 +2,10 @@ package com.lmzqm.Controller;
 
 import com.lmzqm.Model.Doctor;
 import com.lmzqm.Property.BlogProperty;
+import com.lmzqm.Property.MailProperty;
 import com.lmzqm.Repository.DoctorRepository;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +26,8 @@ public class DoctorViewController {
     @Autowired
     private DoctorRepository doctorRepository;
 
+    private  static final Logger logger = LogManager.getLogger(DoctorViewController.class);
+
     @RequestMapping(value = "/{id}")
     public Doctor getDoctorInfo(@PathVariable Long id){
         Doctor doctor = new Doctor();
@@ -42,11 +47,18 @@ public class DoctorViewController {
     @Autowired
     private BlogProperty blogProperty;
 
-    @RequestMapping(value = "/blog")
-    public BlogProperty getBlogInfo(){
+    @Autowired
+    private MailProperty mailProperty;
 
-        blogProperty.setName("Hello world");
-        return blogProperty;
+    @RequestMapping(value = "/blog")
+    public MailProperty getBlogInfo(){
+
+        logger.info("getBlogInfo requst start 开始请求啦！");
+        logger.debug("hello wrold");
+        logger.error("这是一个错误的发生");
+
+        blogProperty.setName("中国");
+        return mailProperty;
     }
 
 
